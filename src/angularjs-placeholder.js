@@ -15,7 +15,7 @@
 
         BLUR_EVENT = "blur",
 
-        getAttr;
+        attrByElem, focus, blur;
 
     /**
     * Using 'getAttribute( "placeholder" )' will get null by IE7.
@@ -31,6 +31,33 @@
       return attr? attr.nodeValue: attr;
     };
 
+    /**
+    * @function
+    */
+    focus = function(){
+  
+      var $this = angular.element( this );
+  
+      if ( $this.val() == attrByElem( this, "placeholder" ) ) {
+  
+        $this.val( '' );
+      }
+    };
+
+    /**
+    * @function
+    */
+    blur = function(){
+  
+      var $this = angular.element( this );
+  
+      if ( $this.val() == '' ) {
+  
+        $this.val( attrByElem( this, "placeholder" ) );
+      }
+  
+    };
+
     return {
   
       link:function( scope, elem, attrs ){
@@ -41,31 +68,14 @@
 
           elem
           .val( attrs.placeholder )
-          .bind( FOCUS_EVENT, function(){
-  
-            var $this = angular.element( this );
-  
-            if ( $this.val() == attrByElem( this, "placeholder" ) ) {
-  
-              $this.val( '' );
-            }
-          })
-          .bind( BLUR_EVENT, function(){
-  
-            var $this = angular.element( this );
-  
-            if ( $this.val() == '' ) {
-  
-              $this.val( attrByElem( this, "placeholder" ) );
-            }
-  
-          });
+          .bind( FOCUS_EVENT, focus )
+          .bind( BLUR_EVENT, blur );
   
           scope.$on( "$destroy", function(){
   
             elem
-            .unbind( FOCUS_EVENT )
-            .unbind( BLUR_EVENT );
+            .unbind( FOCUS_EVENT, focus )
+            .unbind( BLUR_EVENT, blur );
           });
 
         });
