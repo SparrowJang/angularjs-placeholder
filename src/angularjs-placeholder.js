@@ -1,6 +1,8 @@
 
 (function(){
 
+  'use strict';
+
   var support = "placeholder" in document.createElement("input");
 
   var app = angular.module( "html5.placeholder", [] );
