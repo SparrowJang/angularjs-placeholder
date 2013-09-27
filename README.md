@@ -1,7 +1,7 @@
 angularjs-placeholder
 =====================
 
-Implement a html5 placeholder feature to fix older browsers such as **IE7** and **IE8**、**IE9** on angularjs. **Don't need to include jQuery**.
+Implement a html5 placeholder feature to fix older browsers such as **IE7** and **IE8** 、 **IE9** on angularjs. **Don't need to include jQuery**.
 
 ###Dependency
 
