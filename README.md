@@ -37,5 +37,5 @@ Run a static server.
 python -m SimpleHTTPServer 8000
 ```
 
-Finally,open your brower,enter http://localhost:8000/demo/
+Finally,open your brower,enter [http://localhost:8000/demo/](http://localhost:8000/demo/).
 
