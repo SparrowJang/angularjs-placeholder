@@ -11,7 +11,7 @@ Implement a html5 placeholder feature to fix older browsers such as **IE7** and 
 
 Include the 'angulerjs-placeholder' module.
 ```
-<script type="text/javascript" src="../src/angulerjs-placeholder.js"></script>
+<script type="text/javascript" src="../src/angularjs-placeholder.js"></script>
 ```
 
 Set a module dependency and initialize a ng-app.
