@@ -23,7 +23,7 @@ Set a module dependency and initialize a ng-app.
 
 ```
 
-###submit a form
+####submit a form
 
 IE7~IE9 need to clear values.
 
