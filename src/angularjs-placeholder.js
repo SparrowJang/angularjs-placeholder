@@ -7,6 +7,125 @@
 
   var app = angular.module( "html5.placeholder", [] );
 
+  /**
+  * Using 'getAttribute( "placeholder" )' will get null by IE7.
+    Using 'getAttributeNode( "placeholder" ).nodeValue' replace.
+  * @param {HTMLElement} elem
+  * @param {String} name
+  * @type String
+  */
+  var attrByElem = function( elem, name ){
+
+    var attr = elem.getAttributeNode( name );
+
+    return attr? attr.nodeValue: attr;
+  };
+
+
+  app.factory( "placeholder", function(){
+
+    var ensure;
+
+    if ( !support ) {
+
+      var tmpName = "placeholderTmp" + (+new Date());
+
+      var jqliteMerge = function( target, elems ){
+
+        angular.forEach( elems, function( elem ){
+
+          target.push( elem );
+        });
+
+        return target;
+
+      };
+  
+      var record = {
+  
+        commit:function( elems ){
+
+          angular.forEach( elems, function( input ){
+  
+            var $input = angular.element( input ), placeholder;
+  
+            placeholder = attrByElem( input, 'placeholder' );
+  
+            if ( $input.val() == placeholder ) {
+  
+              $input.data( tmpName, $input.val() );
+              $input.val("");
+            }
+  
+          });
+  
+        },
+  
+        doRollback:function( elems ){
+  
+          angular.forEach( elems, function( input ){
+  
+            var $input = angular.element( input ), placeholder;
+  
+            placeholder = $input.data( tmpName );
+  
+            if ( placeholder ) {
+  
+              $input.val( placeholder );
+              $input.data( tmpName, null );
+              //$input.removeData( tmpName );
+            }
+  
+          });
+  
+        }
+  
+      };
+
+      ensure = function( form, callback ){
+
+        var elems;
+
+        if ( form.length && form[0].tagName.toLowerCase() == "form" ) {
+
+          elems = form.find( "input" );
+          elems = jqliteMerge( form.find( "textarea" ), elems );
+
+        } else
+
+          elems = form;
+
+
+        record.commit( elems );
+
+        callback && callback({
+
+          back:function(){
+
+            record.doRollback( elems );
+          }
+        });
+
+      };
+
+    } else {
+
+      ensure = function( form, callback ){
+
+        callback && callback({back:function(){}});
+
+      };
+
+    }
+
+    return {
+
+      ensure:ensure
+    };
+
+  });
+
+
   if ( support ) return ;
 
   app.directive( "placeholder", [function(){
@@ -17,21 +136,8 @@
 
         BLUR_EVENT = "blur",
 
-        attrByElem, focus, blur;
+        focus, blur;
 
-    /**
-    * Using 'getAttribute( "placeholder" )' will get null by IE7.
-      Using 'getAttributeNode( "placeholder" ).nodeValue' replace.
-    * @param {HTMLElement} elem
-    * @param {String} name
-    * @type String
-    */
-    attrByElem = function( elem, name ){
-
-      var attr = elem.getAttributeNode( name );
-
-      return attr? attr.nodeValue: attr;
-    };
 
     /**
     * @function
@@ -86,5 +192,6 @@
     };
   
   }]);
+
 
 })();

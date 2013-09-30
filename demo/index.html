@@ -8,20 +8,42 @@
 </head>
 <body >
 
-	<form action="">
-		
-		<input type="text" placeholder="Please,enter your name!" name="name" ng-model="name"/><br>
-		<input type="password" placeholder="Please,enter your password!" name="password" ng-model="password"/><br>
-		<textarea id="" name="" placeholder="Please,enter content!" rows="10" cols="30" ng-model="content"></textarea>
-	</form>
 
-	name: {{name}}<br>
-	password: {{password}}<br>
-	content: {{content}}
+		<form action="" ng-controller="formController" >
+			
+			<input type="text" placeholder="Please,enter your name!" name="name" ng-model="name"/><br>
+			<input type="password" placeholder="Please,enter your password!" name="password" ng-model="password"/><br>
+			<textarea id="" name="" placeholder="Please,enter content!" rows="10" cols="30" ng-model="content"></textarea>
+			<input type="button" ng-click="show()" value="show" /><br>
 
+	    	by scope:
+			name: {{name}}<br>
+			password: {{password}}<br>
+			content: {{content}}<br>
+
+    		by element:<br>
+    		content: {{eContent}}<br>
+
+		</form>
+	</div>
 	<script type="text/javascript" src="../src/angularjs-placeholder.js"></script>
 	<script type="text/javascript">
 		var app = angular.module( "demoApp", ["html5.placeholder"] );
+
+        app.controller( "formController", [ "placeholder", "$element", "$scope", function( placeholder, elem, $scope ){
+
+          $scope.show = function(){
+
+            placeholder.ensure( elem, function( record ){
+
+              $scope.eContent = elem.find( "textarea" ).val();
+              record.back();
+            });
+
+          };
+ 
+		}]);
+
 		angular.bootstrap( document, [app.name] );
 	</script>
 </body>

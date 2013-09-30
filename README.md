@@ -23,6 +23,25 @@ Set a module dependency and initialize a ng-app.
 
 ```
 
+###submit a form
+
+IE7~IE9 need to clear values.
+
+```
+app.controller( "demoController", function( $element, placeholder ){
+
+  placeholder.ensure( $element, function( record ){
+
+    //doSomething
+
+    //do rollback placeholder to element.
+    if ( !valid ) record.back();
+
+  })
+
+});
+```
+
 ###Demo
 
 Clone this project.
