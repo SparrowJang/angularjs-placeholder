@@ -1,0 +1,23 @@
+{
+  "name": "angularjs-placeholder",
+  "version": "1.0.0",
+  "homepage": "https://github.com/nupykl/angularjs-placeholder",
+  "authors": [
+    "SparrowJang"
+  ],
+  "description": "A module to implement html5 placeholder features in IE7-9 on angularjs without using jQuery",
+  "main": "src/angularjs-placeholder.js",
+  "keywords": [
+    "placeholder"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}
