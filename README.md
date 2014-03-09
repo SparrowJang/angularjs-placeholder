@@ -3,6 +3,10 @@ angularjs-placeholder
 
 Implement a html5 placeholder feature to fix older browsers such as **IE7** and **IE8** 、 **IE9** on angularjs. **Don't need to include jQuery**.
 
+##LiveDemo
+
+[demo](http://sparrowhome.twbbs.org/example/bower_components/angularjs-placeholder/demo/index.html)
+
 ##Install
 
 ```
@@ -28,7 +32,6 @@ Set a module dependency and initialize a ng-app.
   var app = angular.module( "demoApp", ["html5.placeholder"] );
   angular.bootstrap( document, [app.name] );
 </script>
-
 ```
 
 #####submit a form:
@@ -44,7 +47,6 @@ app.controller( "demoController", function( $element, placeholder ){
 
     //do rollback placeholder to element.
     if ( !valid ) record.back();
-
   })
 
 });
