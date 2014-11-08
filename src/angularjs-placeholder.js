@@ -21,6 +21,11 @@
     return attr? attr.nodeValue: attr;
   };
 
+  var hasPassword = function( elem ){
+
+    return attrByElem( elem, "type" ) == "password";
+  };
+
 
   app.factory( "placeholder", function(){
 
@@ -132,12 +137,31 @@
 
     var time = (+new Date()),
 
+        DATA_KEY = "_placeholder_" + time,
+
         FOCUS_EVENT = "focus",
 
         BLUR_EVENT = "blur",
 
-        focus, blur;
+        isIE9 = /msie 9/i.test( navigator.userAgent ),
 
+        focus, blur, showPlaceholderTextByPassword, resetByElem;
+
+    /**
+     * @function
+     */
+    showPlaceholderTextByPassword = function( elem ){
+
+      if ( elem.data( DATA_KEY ).type == "password" ) elem.attr( "type", "text" );
+    };
+
+    /**
+     * @function
+     */
+    resetByElem = function( elem ){
+
+      if ( elem.data( DATA_KEY ).type == "password" ) elem.attr( "type", "password" );
+    };
 
     /**
     * @function
@@ -149,6 +173,7 @@
       if ( $this.val() == attrByElem( this, "placeholder" ) ) {
   
         $this.val( '' );
+        resetByElem( $this );
       }
     };
 
@@ -162,6 +187,7 @@
       if ( $this.val() == '' ) {
   
         $this.val( attrByElem( this, "placeholder" ) );
+        showPlaceholderTextByPassword( $this );
       }
   
     };
@@ -172,18 +198,22 @@
   
         scope.$watch("ready", function(){
 
-          if ( elem.attr("type") == "password" ) return {};
+          if ( elem.attr("type") == "password" && !isIE9 ) return {};
 
           elem
           .val( attrs.placeholder )
+          .data( DATA_KEY, {type:( elem.attr("type") || "" ).toLowerCase()} )
           .bind( FOCUS_EVENT, focus )
           .bind( BLUR_EVENT, blur );
+
+          showPlaceholderTextByPassword( elem );
   
           scope.$on( "$destroy", function(){
   
             elem
             .unbind( FOCUS_EVENT, focus )
             .unbind( BLUR_EVENT, blur );
+            resetByElem( elem );
           });
 
         });
