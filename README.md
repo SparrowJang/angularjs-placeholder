@@ -13,6 +13,12 @@ Implement a html5 placeholder feature to fix older browsers such as **IE7** and 
 bower install angularjs-placeholder
 ```
 
+##Install node modules
+
+```bash
+npm install
+```
+
 ###Dependency
 
 * angularjs
@@ -61,10 +67,20 @@ git clone git@github.com:SparrowJang/angularjs-placeholder.git
 cd angularjs-placeholder
 ```
 
-Run a static server.
+Install gulp dependencies
 ```
-python -m SimpleHTTPServer 8000
+npm install
 ```
 
-Finally,open your brower,enter [http://localhost:8000/demo/](http://localhost:8000/demo/).
+Run a static server.
+```
+gulp server
+```
+
+##Build
+
+Build a minify script.
+```
+gulp
+```
 
