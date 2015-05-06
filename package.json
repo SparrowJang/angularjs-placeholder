@@ -1,6 +1,6 @@
 {
   "name": "angularjs-placeholder",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "src/angularjs-placeholder.js",
   "description": "A module to implement html5 placeholder features in IE7-9 on angularjs without using jQuery",
   "devDependencies": {
