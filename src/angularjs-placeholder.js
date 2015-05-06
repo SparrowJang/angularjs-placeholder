@@ -133,7 +133,7 @@
 
   if ( support ) return ;
 
-  app.directive( "placeholder", [function(){
+  app.directive( "placeholder", ['$timeout', function($timeout){
 
     var time = (+new Date()),
 
@@ -182,12 +182,15 @@
     */
     blur = function(){
   
-      var $this = angular.element( this );
+      var $this = angular.element( this ), _this = this;
   
       if ( $this.val() == '' ) {
   
-        $this.val( attrByElem( this, "placeholder" ) );
-        showPlaceholderTextByPassword( $this );
+        //fixed #9 issue for tab button
+        $timeout(function(){
+          $this.val( attrByElem( _this, "placeholder" ) );
+          showPlaceholderTextByPassword( $this );
+        },1);
       }
   
     };
