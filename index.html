@@ -8,6 +8,8 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <script src="libs/angular.js"></script>
+    <script src="libs/angularjs-placeholder.js"></script>
   </head>
   <body>
     <section class="page-header">
@@ -27,7 +29,41 @@
 <h2>
 <a id="livedemo" class="anchor" href="#livedemo" aria-hidden="true"><span class="octicon octicon-link"></span></a>LiveDemo</h2>
 
-<p><a href="http://www.sparrowjang.com/example/bower_components/angularjs-placeholder/demo/index.html">demo</a></p>
+
+		<form action="" ng-controller="formController" >
+			
+			<input type="text" placeholder="Please,enter your name!" name="name" ng-model="name"/><br>
+			<input type="password" placeholder="Please,enter your password!" name="password" ng-model="password"/><br>
+			<textarea id="" name="" placeholder="Please,enter content!" rows="10" cols="30" ng-model="content"></textarea>
+			<input type="button" ng-click="show()" value="show" /><br>
+
+	    	by scope:<br>
+            ================<br>
+			name: {{name}}<br>
+			password: {{password}}<br>
+			content: {{content}}<br>
+
+            <br>
+    		by element:<br>
+            =========================<br>
+    		content: {{eContent}}<br>
+
+		</form>
+	</div>
+	<script type="text/javascript" src="angularjs-placeholder.js"></script>
+	<script type="text/javascript">
+		var app = angular.module( "demoApp", ["html5.placeholder"] );
+        app.controller( "formController", [ "placeholder", "$element", "$scope", function( placeholder, elem, $scope ){
+          $scope.show = function(){
+            placeholder.ensure( elem, function( record ){
+              $scope.eContent = elem.find( "textarea" ).val();
+              record.back();
+            });
+          };
+ 
+		}]);
+		angular.bootstrap( document, [app.name] );
+	</script>
 
 <h2>
 <a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
