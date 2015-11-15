@@ -5,7 +5,7 @@ Implement a html5 placeholder feature to fix older browsers such as **IE7** and 
 
 ##LiveDemo
 
-[demo](http://www.sparrowjang.com/example/bower_components/angularjs-placeholder/demo/index.html)
+[demo](http://www.sparrowjang.com/angularjs-placeholder/)
 
 ##Install
 
