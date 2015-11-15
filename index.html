@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Angularjs-placeholder by SparrowJang</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Angularjs-placeholder</h1>
+      <h2 class="project-tagline">Implement a html5 placeholder feature to fix older browsers such as IE7 and IE8 、 IE9 on angularjs. Don&#39;t need to include jQuery.</h2>
+      <a href="https://github.com/SparrowJang/angularjs-placeholder" class="btn">View on GitHub</a>
+      <a href="https://github.com/SparrowJang/angularjs-placeholder/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/SparrowJang/angularjs-placeholder/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="angularjs-placeholder" class="anchor" href="#angularjs-placeholder" aria-hidden="true"><span class="octicon octicon-link"></span></a>angularjs-placeholder</h1>
+
+<p>Implement a html5 placeholder feature to fix older browsers such as <strong>IE7</strong> and <strong>IE8</strong> 、 <strong>IE9</strong> on angularjs. <strong>Don't need to include jQuery</strong>.</p>
+
+<h2>
+<a id="livedemo" class="anchor" href="#livedemo" aria-hidden="true"><span class="octicon octicon-link"></span></a>LiveDemo</h2>
+
+<p><a href="http://www.sparrowjang.com/example/bower_components/angularjs-placeholder/demo/index.html">demo</a></p>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
+
+<pre><code>bower install angularjs-placeholder
+</code></pre>
+
+<h2>
+<a id="install-node-modules" class="anchor" href="#install-node-modules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install node modules</h2>
+
+<div class="highlight highlight-source-shell"><pre>npm install</pre></div>
+
+<h3>
+<a id="dependency" class="anchor" href="#dependency" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependency</h3>
+
+<ul>
+<li>angularjs</li>
+</ul>
+
+<h3>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h3>
+
+<p>Include the 'angulerjs-placeholder' module.</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>../src/angularjs-placeholder.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<p>Set a module dependency and initialize a ng-app.</p>
+
+<div class="highlight highlight-text-html-basic"><pre><span class="pl-s1">&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span>&gt;</span>
+<span class="pl-s1">  <span class="pl-k">var</span> app <span class="pl-k">=</span> angular.module( <span class="pl-s"><span class="pl-pds">"</span>demoApp<span class="pl-pds">"</span></span>, [<span class="pl-s"><span class="pl-pds">"</span>html5.placeholder<span class="pl-pds">"</span></span>] );</span>
+<span class="pl-s1">  angular.bootstrap( <span class="pl-c1">document</span>, [app.<span class="pl-c1">name</span>] );</span>
+<span class="pl-s1">&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+
+<h5>
+<a id="submit-a-form" class="anchor" href="#submit-a-form" aria-hidden="true"><span class="octicon octicon-link"></span></a>submit a form:</h5>
+
+<p>IE7~IE9 need to clear values.</p>
+
+<div class="highlight highlight-source-js"><pre>app.controller( <span class="pl-s"><span class="pl-pds">"</span>demoController<span class="pl-pds">"</span></span>, <span class="pl-k">function</span>( <span class="pl-smi">$element</span>, <span class="pl-smi">placeholder</span> ){
+
+  placeholder.ensure( $element, <span class="pl-k">function</span>( <span class="pl-smi">record</span> ){
+
+    <span class="pl-c">//doSomething</span>
+
+    <span class="pl-c">//do rollback placeholder to element.</span>
+    <span class="pl-k">if</span> ( <span class="pl-k">!</span>valid ) record.<span class="pl-c1">back</span>();
+  })
+
+});</pre></div>
+
+<h3>
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h3>
+
+<p>Clone this project.</p>
+
+<pre><code>git clone git@github.com:SparrowJang/angularjs-placeholder.git
+
+cd angularjs-placeholder
+</code></pre>
+
+<p>Install gulp dependencies</p>
+
+<pre><code>npm install
+</code></pre>
+
+<p>Run a static server.</p>
+
+<pre><code>gulp server
+</code></pre>
+
+<h2>
+<a id="build" class="anchor" href="#build" aria-hidden="true"><span class="octicon octicon-link"></span></a>Build</h2>
+
+<p>Build a minify script.</p>
+
+<pre><code>gulp
+</code></pre>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/SparrowJang/angularjs-placeholder">Angularjs-placeholder</a> is maintained by <a href="https://github.com/SparrowJang">SparrowJang</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
