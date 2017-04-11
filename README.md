@@ -3,27 +3,27 @@ angularjs-placeholder
 
 Implement a html5 placeholder feature to fix older browsers such as **IE7** and **IE8** 、 **IE9** on angularjs. **Don't need to include jQuery**.
 
-##LiveDemo
+## LiveDemo
 
 [demo](http://www.sparrowjang.com/angularjs-placeholder/)
 
-##Install
+##I nstall
 
 ```
 bower install angularjs-placeholder
 ```
 
-##Install node modules
+## Install node modules
 
 ```bash
 npm install
 ```
 
-###Dependency
+### Dependency
 
 * angularjs
 
-###Usage
+### Usage
 
 Include the 'angulerjs-placeholder' module.
 
@@ -40,7 +40,7 @@ Set a module dependency and initialize a ng-app.
 </script>
 ```
 
-#####submit a form:
+##### submit a form:
 
 IE7~IE9 need to clear values.
 
@@ -58,7 +58,7 @@ app.controller( "demoController", function( $element, placeholder ){
 });
 ```
 
-###Demo
+### Demo
 
 Clone this project.
 ```
@@ -77,7 +77,7 @@ Run a static server.
 gulp server
 ```
 
-##Build
+## Build
 
 Build a minify script.
 ```
